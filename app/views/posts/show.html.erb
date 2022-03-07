@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>tittle:</strong>
+  <%= @post.tittle %> 
+</p>
+<p>
+  <strong>discription:</strong>
+  <%= @post.discription %> 
+</p>
+<p>
+<%= image_tag @post.image if @post.image.attached? %>
+</p>
+<%= render partial: 'like', locals: {post :post} %>
+
+
+

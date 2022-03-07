@@ -1,0 +1,12 @@
+<%=post.likes.count%>
+<%=like= Like.find_by(user_id: current_user.id , likeable_id: post.id, likeable_type: "post")%>
+
+<%if (like).nil? %>
+    <div>
+      <%= link_to 'like', likes_path(:like => {:likeable_id => post.id , :likeable_type => "Post" }), method: :post %>
+    </div>
+<%else%>
+    <div>
+      <%= link_to 'unlike',  method: :delete %>
+    </div>
+<%end%>

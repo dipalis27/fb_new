@@ -1,0 +1,19 @@
+<% post.comment.each do |comment| %>
+   <p>
+    <strong>Commentes:</strong>
+    <%= comment.commentes %>
+     <%= image_tag comment.image if comment.image.attached? %>
+   </p>
+   <%=comment.likes.count%>
+   <% like = Like.find_by(user_id: current_user.id , likeable_id: comment.id, likeable_type: "Comment")%>
+
+    <%if (like).nil? %>
+    <div>
+      <%= button_to 'like', likes_path(:like => {:likeable_id => comment.id , :likeable_type => "Comment"   }), method: :post %>
+    </div>
+    <%else%>
+    <div>
+      <%= button_to 'unlike', method: :delete %>
+    </div>
+    <%end%>
+<% end %>

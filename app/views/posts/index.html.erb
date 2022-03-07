@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg style="background-color:  #cdb4db;">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" <%= link_to 'Home',posts_path %> <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" <%= link_to 'New  post',new_post_path %></a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      <%= render partial: "posts/search" %>
+    </span>
+  </div>
+</nav>
+<table>     
+
+  <tbody>
+   <% @post.each do |post| %>
+      <tr>
+      <h1><%= post.tittle %></h1>
+           <%= post.discription %>
+           <%= image_tag post.image ,size:200  if post.image.attached?%>
+           <br>
+           <%= render partial: 'likes/like', locals: {post: post} %>
+           <%#= link_to 'like', likes_path(:like => {:likeable_id => post.id , :likeable_type => "Post" }), method: :post %>
+      </tr>
+      <br>
+    <%= render partial: "comments/comment_form", locals: {post:post} %>
+    <%= render partial: "comments/comment", locals: {post: post} %>
+       <td><%= link_to 'Show',  post%></td>
+       <td><%= link_to 'Edit', edit_post_path(post) %></td>
+       <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+  
+    <%end%>
+  </tbody>
+</table>
+<br>
+
+
+
+

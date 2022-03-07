@@ -1,0 +1,33 @@
+<div class="border border-dark">
+ <center>
+ <h >Ask Question</h>
+
+  <%= form_with model: @post do |form| %>
+    
+  <br>
+  <div>
+    <%= form.label :tittle %><br>
+    <%= form.text_field :tittle %>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label :discription %><br>
+    <%= form.text_field :discription%>
+  </div>
+  <br>
+  <div class="field">
+    <%= form.label "image"%><br>
+    <%= form.file_field :image %> 
+  <br>
+  </div>
+  <div class="actions">
+    <%= form.submit  class: "btn btn-danger"  %>
+  </div>
+
+  <%end %>
+
+  <br>
+  <%= link_to 'Back', posts_path %>
+  <br>
+</center>
+</div> 

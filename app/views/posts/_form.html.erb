@@ -1,0 +1,27 @@
+<%= form_with :model @post do |form| %>
+ 
+   
+  <div class="field">
+    <%= form.label :tittle %>
+    <%= form.text_field :tittle %>
+  </div>
+   <br>
+
+   <div class="field">
+    <%= form.label :discription%>
+    <%= form.text_field :discription%>
+  </div>
+   <br>
+    <div class="field">
+
+      <%=form.file_field :image%>
+   <br>
+   </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+ 
+
+
